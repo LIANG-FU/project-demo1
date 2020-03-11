@@ -1,18 +1,43 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Header />
+    <div class="main">
+      <Left />
+      <Middle />
+      <Right />
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import Header from "../components/Header.vue";
+import Left from "../components/Left.vue";
+import Middle from "../components/Middle.vue";
+import Right from "../components/Right.vue";
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
-    HelloWorld
+    Header,
+    Left,
+    Middle,
+    Right
+  },
+  mounted() {
+    this.drawLine();
+  },
+  methods: {
+    drawLine() {
+      console.log(this.$refs.bar);
+    }
   }
-}
+};
 </script>
+<style lang="less">
+.main {
+  padding: 0 30px 30px;
+  position: relative;
+  display: grid;
+  grid-template-columns: 3fr 4fr 3fr;
+  grid-column-gap: 20px;
+}
+</style>
